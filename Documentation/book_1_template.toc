@@ -1,0 +1,50 @@
+\contentsline {chapter}{Introduction}{13}{chapter*.4}
+\contentsline {section}{Figures}{13}{section*.5}
+\contentsline {section}{Tables}{14}{section*.7}
+\contentsline {chapter}{Working With Ubuntu}{15}{chapter*.9}
+\contentsline {section}{Introduction}{15}{section*.10}
+\contentsline {subsection}{Operating Systems}{15}{subsection*.11}
+\contentsline {subsection}{Unix \& Linux}{16}{subsection*.12}
+\contentsline {subsection}{Ubuntu}{16}{subsection*.13}
+\contentsline {subsection}{Open Source}{17}{subsection*.14}
+\contentsline {section}{Terminal}{17}{section*.15}
+\contentsline {subsection}{Getting into the Terminal}{17}{subsection*.16}
+\contentsline {subsection}{Common Commands}{20}{subsection*.19}
+\contentsline {subsection}{Understanding filestructure of Ubuntu}{20}{subsection*.21}
+\contentsline {subsection}{Copy, Paste, Delete}{20}{subsection*.22}
+\contentsline {subsection}{common commands}{20}{subsection*.24}
+\contentsline {subsection}{Furthur Resources}{21}{subsection*.26}
+\contentsline {chapter}{Working with LIGGGHTS}{23}{chapter*.27}
+\contentsline {section}{Introduction}{23}{section*.28}
+\contentsline {section}{Example Scripts}{23}{section*.29}
+\contentsline {subsection}{Running LIGGGHTS Script}{25}{subsection*.31}
+\contentsline {section}{Converting the files}{25}{section*.32}
+\contentsline {section}{Using Paraview}{26}{section*.34}
+\contentsline {section}{Opening the input file}{27}{section*.38}
+\contentsline {section}{Different Files and format }{28}{section*.41}
+\contentsline {section}{Anatomy of input file}{28}{section*.42}
+\contentsline {subsection}{Initialisation}{30}{subsection*.43}
+\contentsline {subsection}{Properties}{31}{subsection*.44}
+\contentsline {subsection}{Detailed Settings}{33}{subsection*.45}
+\contentsline {subsection}{Execution Commands}{34}{subsection*.46}
+\contentsline {subsection}{Summary}{34}{subsection*.47}
+\contentsline {chapter}{Making your own Simulation}{35}{chapter*.48}
+\contentsline {section}{Pre-requisites}{35}{section*.49}
+\contentsline {section}{Steps Involved}{36}{section*.51}
+\contentsline {section}{The Tale of FeedFrame}{36}{section*.52}
+\contentsline {subsection}{Defining our objective}{37}{subsection*.53}
+\contentsline {subsection}{Setting up the meshing and domain box}{37}{subsection*.54}
+\contentsline {subsection}{Collecting particle properties information}{38}{subsection*.59}
+\contentsline {subsection}{Writing the Initialisation}{39}{subsection*.61}
+\contentsline {subsection}{Writing the Properties}{40}{subsection*.62}
+\contentsline {section}{Errors, Errors Everywhere}{44}{section*.63}
+\contentsline {subsection}{Errors}{44}{subsection*.64}
+\contentsline {subsection}{Debugging basics}{45}{subsection*.65}
+\contentsline {subsection}{How to get help}{46}{subsection*.66}
+\contentsline {section}{Summary}{46}{section*.67}
+\contentsline {chapter}{Further Resources \& Ending Note}{47}{chapter*.68}
+\contentsline {section}{Further Studying}{47}{section*.69}
+\contentsline {section}{Rationale behind working \LaTeX }{47}{section*.70}
+\contentsline {chapter}{Bibliography}{49}{chapter*.71}
+\contentsline {chapter}{Index}{51}{chapter*.72}
+\contentsfinish 

@@ -1,0 +1,39 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces This is a margin figure. The helix is defined by $x = \qopname \relax o{cos}(2\pi z)$, $y = \qopname \relax o{sin}(2\pi z)$, and $z = [0, 2.7]$. The figure was drawn using Asymptote (\url {http://asymptote.sf.net/}).\relax }}{13}{figure.0.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces This graph shows $y = \qopname \relax o{sin}x$ from about $x = [-10, 10]$. \emph {Notice that this figure takes up the full page width.}}}{14}{figure.caption.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3}{\ignorespaces Appearance of Ubuntu Desktop}}{18}{figure.caption.17}
+\contentsline {figure}{\numberline {4}{\ignorespaces In the \emph {Dash}, type \emph {Terminal} and click on the Terminal Icon that appears. The terminal windows is shown in the above figure.}}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {5}{\ignorespaces xkcd shows what-if linux was real world\relax }}{21}{figure.0.5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6}{\ignorespaces Type \textit {cd LIG} and hit Tab\relax }}{23}{figure.0.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces The Tab Completion should autocomplete\relax }}{23}{figure.0.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Continue typing '/e' and hit Tab \relax }}{23}{figure.0.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces The tab completion should again autocomplete\relax }}{23}{figure.0.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Type 'L' and Tab and 'T' and Tab\relax }}{23}{figure.0.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Press enter to open the examples folder\relax }}{23}{figure.0.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces -14ex}}{24}{figure.caption.30}
+\contentsline {figure}{\numberline {13}{\ignorespaces Type li into the shell prompt and hit\relax }}{25}{figure.0.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Type liggghts < in.meshGran\relax }}{25}{figure.0.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces LIGGGHTS should begin executing the file\relax }}{25}{figure.0.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces To view results, goto the post folder\relax }}{25}{figure.0.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Type paraview, to enter paraview\relax }}{25}{figure.0.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces LPP Processing files}}{25}{figure.caption.33}
+\contentsline {figure}{\numberline {19}{\ignorespaces Opening files in Paraview}}{26}{figure.caption.35}
+\contentsline {figure}{\numberline {20}{\ignorespaces Properties Browser\relax }}{26}{figure.0.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces Playback Bar\relax }}{26}{figure.0.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces Opening Files}}{26}{figure.caption.36}
+\contentsline {figure}{\numberline {23}{\ignorespaces Saving Animation}}{27}{figure.caption.37}
+\contentsline {figure}{\numberline {24}{\ignorespaces Opening the file using command prompt}}{27}{figure.caption.39}
+\contentsline {figure}{\numberline {25}{\ignorespaces Opening the files using File Manager}}{28}{figure.caption.40}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {26}{\ignorespaces Symmetric Matrix}}{35}{figure.caption.50}
+\contentsline {figure}{\numberline {27}{\ignorespaces Graphical Representation of feedframe.Image taken from the \href {http://www.americanpharmaceuticalreview.com/Featured-Articles/116357-Sample-Presentation-in-Rotary-Tablet-Press-Feed-Frame-Monitoring-by-Near-Infrared-Spectroscopy/}{paper} \relax }}{36}{figure.0.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Main View}}{37}{figure.caption.55}
+\contentsline {figure}{\numberline {29}{\ignorespaces Side View}}{37}{figure.caption.56}
+\contentsline {figure}{\numberline {30}{\ignorespaces Another Side View}}{38}{figure.caption.57}
+\contentsline {figure}{\numberline {31}{\ignorespaces Coefficient of Restitutions and Friction\relax }}{39}{figure.0.31}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsfinish 
