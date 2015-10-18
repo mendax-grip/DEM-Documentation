@@ -1,0 +1,344 @@
+\documentclass[8pt]{extarticle} % extarticle: font sizes < 10
+
+\usepackage[
+      pdftitle={LIGGGHTS Commands Reference},
+      pdfauthor={Siddharth Kanungo},
+      pdfkeywords={LIGGGHTS},
+      pdfsubject={Quick Reference Card for LIGGGHTS}
+]{hyperref}
+
+\usepackage{refcards}
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\usepackage{vmargin}
+% A4
+\setpapersize[landscape]{A4}
+\setmarginsrb%
+{1.5cm}  % left
+{1.0cm}  % top
+{1.5cm}  % right
+{1.0cm}  % bottom
+{0ex}    % header height
+{0ex}    % header separation
+{0ex}    % footer height
+{0ex}    % footser separation
+\setlength\columnsep{7mm}
+
+% Letter
+%\setpapersize[landscape]{USletter}
+%\setmarginsrb%
+%{1.1cm}  % left
+%{1.1cm}  % top
+%{0.9cm}  % right
+%{0.9cm}  % bottom
+%{0ex}    % header height
+%{0ex}    % header separation
+%{0ex}    % footer height
+%{0ex}    % footser separation
+%\setlength\columnsep{4mm}
+
+\begin{document}
+\raggedright
+
+\begin{multicols}{3}
+
+\title{LIGGGHTS Reference Card}
+
+{\small
+(c) 2015 Siddharth Kanungo \url{<siddharth.soka@gmail.com>}\\
+\url{http://www.mendax-grip.github.io}
+
+This work is licensed under the Creative Commons Attribution-Noncommercial-Share
+Alike 3.0 License. To view a copy of this license, visit
+\url{http://creativecommons.org/licenses/by-nc-sa/}
+}
+
+\vspace*{1pt}
+
+\section{Input File}
+A LIGGGHTS input script has four parts:
+\begin{itemize}
+\item \textbf{Initialisation}
+  Set the parameters that need to be defined before particles are created
+\item \textbf{Setup}
+  Define the material properties, particles, geometry and particle generation
+\item \textbf{Detailed Settings}
+  Define some settings that correspond to speed and memory utilisation, output options etc
+\item \textbf{Execution}
+  The actual \textit{run} command that executes the simulation
+\end{itemize}
+
+There are two types of statements in the LIGGGHTS input deck:
+\begin{list}{Type of Commands}{}
+\item Individual Commands
+  It establish basic settings for the simulation
+\item Fixes
+  To set particular aspects of the simulation
+\end{list}
+
+Generally, fixes and some particular commands follow common structure:
+\begin{minted}{cpp}
+  fix ID group-ID style args
+\end{minted}
+\begin{itemize}
+\item ID \= user-assigned name for the fix
+\item Group-ID \= ID of the group to which the fix is applied
+\item style \= type of fix being applied
+\item args \= arguements used by a particular style; often consists of a keyword and particular value
+\end{itemize}
+\vspace{1ex}
+
+\section[Initialisation]{Initialisation}
+
+
+  \subsection{Preliminaries}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{Commands}         &     \textbf{Comment} \\
+  \end{tabular}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+    \tt units si     & Gives the Units \\ & system to be used \\
+    \hline
+    \tt atom\_style granular        & Describes the types of atoms \\ & to be used in the simulation \\
+    \hline
+    \tt atom\_modify map array        &  Modify properties of atom \\ & style.  Map keyword determines \\ & how atom ID Lookup is done \\ & for molecular problems  \\
+    \hline
+    \tt boundary f f f      & Describes the boundaries of the domain as fixed(f), periodic(p) or movable(m)                        \\
+    \hline
+    \tt newton off                  & Determines whether or not to calculate pairwise interactions on each processor; Best to leave off for DEM          \\
+    \hline
+    \tt communicate single vel yes                      & Sets the style of inter-processor communication that occurs each timestep as atom coordinates and other properties are exchanged between neighboring processors and stored as properties of ghost atoms         \\
+    \hline
+  \tt processors 2 2 3                & Specifies how to decompose domain for parallelization \\\hline
+  \end{tabular}
+
+  \vspace*{1ex}
+  \vspace*{1ex}
+  \subsection{Declare domain}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+    \tt region domain block xlo xhi ylo yhi zlo zhi units box                     & Specifies a region called 'domain' that describes the bounds of the domain \\
+    \hline
+  \tt create\_box n domain         & This simulation uses n different material types\\
+  \end{tabular}
+
+  \vspace*{1ex}
+  \subsection{Neighbor Listing}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+    \tt neighbor 0.003 bin                  & Neighbor statements describe how large neighbor lists will be and how often to recalculate. Recommended to be a value ~ Diameter \\
+    \hline
+  \tt neigh\_modify keyword values & Sets parameter that affect the building and use of pairwise neighbor lists \\
+  \end{tabular}
+  \vspace*{-10pt}\hspace{2cm} (avoid!)
+
+
+  \section{Setup}
+  The Setup portion of the input file consists of the use of many fix command.
+
+\subsection{Material and Interaction Properties required}
+The format of the fix is the following:
+\begin{minted}{cpp}
+  fix ID group-ID style args
+  \end{minted}
+  \begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+    \tt\textbf{ Command} &  \textbf{Value} \\
+    \tt ID             & Name of the fix so as to reference later                \\
+    \hline
+    \tt group-ID     & The atom-types that you want the fix to work on; write \textbf{all} for all atoms          \\
+    \hline
+    \tt style  & property/global propertyName \\
+    \hline
+    \tt args & peratomtype or peratompair \\
+    \vspace*{1ex}
+      \vspace*{1ex}
+
+    \textsc{Hence onewards only the style and args will be shown}
+
+  \end{tabular}
+  \vspace*{1ex}
+
+  \textbf{List of properties name}
+  \begin{itemize}
+  \item youngsModulus peratomtype value
+  \item poissonsRatio peratomtype value
+  \item coefficientFriction peratompair numberOfAtoms Value11 Value12 .. Value nn
+  \item coefficientRestitution peratompair numberOfAtoms Value11 Value12 .. Value nn
+  \item coefficientRollingFriction peratompair numberOfAtoms Value11 Value12 .. Value nn
+  \end{itemize}
+
+  \subsection{Particle Insertion}
+  Particle insertion consists of the four important stages:
+  \begin{itemize}
+  \item Defining the particle template
+  \item Defining the particle distribution template
+  \item Defining the region of insertion
+  \item Defining the Insertion method
+  \end{itemize}
+
+\subsubsection{Particle Template}
+\begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{Value} & \textbf{Command} \\
+  \tt  particleTemplate/sphere  & style \\
+  \tt  atom\_type, density, radius & args \\
+\end{tabular}
+  \vspace*{2ex}
+
+
+\subsubsection{Particle Particle Distribution Template}
+\begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{Value}  &  \textbf{Command} \\
+  \tt particledistribution/discrete & style \\
+  \tt ID-of the particle template to be used & args \\
+\end{tabular}
+
+\vspace*{2ex}
+
+\subsubsection{Region of Insertion}
+\begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{Value}  &  \textbf{Command} \\
+  \tt mesh/surface & style \\
+  \tt region command & style \\
+  \tt type  & args \\
+\end{tabular}
+\vspace*{2ex}
+In case of Insertion region, you can either
+\begin{itemize}
+\item Define a mesh as a insertion region by importing it
+\item or, Define a region as insertion face
+\end{itemize}
+
+\vspace*{2ex}
+\subsubsection{Particle Insertion Method}
+Describe the particle insertion. There are three methods of insertion
+\begin{itemize}
+\item Insert/rate/region
+\item Insert/pack
+\item Insert stream
+\end{itemize}
+The recommended is to use the rate/region or stream.
+\begin{tabular}{L{0.55\linewidth} L{0.45\linewidth}}
+  \tt \textbf{Value}  &  \textbf{Command} \\
+  \tt insert/rate/region & style \\
+  \tt insert/pack & style \\
+  \tt insert/stream & style \\
+\end{tabular}
+It is also to be noted that the method of insertion requires how you would like to insert particles ie. on the basis of Mass, Volume or Number of Particles.The distribution template, region of insertion and the velocity at the time insertion are given as arguments.
+
+
+\subsubsection{Importing Mesh From CAD}
+
+\begin{minted}{cpp}
+  /* Here the file is imported named as cad1
+  The style is mesh/surface
+  The location is give to keyword file.stl
+  The geometry can be scaled using the scale argument */
+  fix cad1 all mesh/surface file file.stl type 2 scale 0.1
+  \end{minted}
+
+\subsubsection{Use of Imported Mesh as Granular Wall}
+
+\begin{minted}{cpp}
+  /* Here the wall is named geometry
+  The style is wall/gran
+  The number of meshes is specified in n_meshes
+  The ID of the imported cad file is given in meshes */
+  fix geometry all wall/gran model hooke tangential history &
+  mesh n_meshes 1 meshes cad
+  \end{minted}
+
+\subsubsection{Creating primitives shapes to use as Walls}
+
+Apart from importing stl files, we can also use primitive shapes such as plane, cylinder, sphere to be used as walls.
+\begin{minted}{cpp}
+  /* Here the name of the wall is p1
+  The atom type is 2
+  The wall is in the XY plane passing through origin */
+  fix p1 all wall/gran model hooke tangential history &
+  primitive type 2 zplane 0.0
+  \end{minted}
+\subsubsection{Defining the Physics}
+  Pair Coeffeciants statements can be used to model different interactions between different particle types. Suppose modelling interaction between a particle with wall which is more cohesive than a second one.
+
+  \begin{minted}{cpp}
+ /* This is the pair style to be used when using hooke pair style
+  # The second statement assumes same pair_style for every atoms */
+  pair_style gran model hooke tangential history
+  pair_coeff * *
+\end{minted}
+
+\section{Detailed Settings}
+
+\subsection{Integrator}
+Declaration of the integrator to use. It will always be nve/sphere, unless multisphere particles are used.
+\begin{minted}{cpp}
+  fix integrate all nve/sphere
+  \end{minted}
+\subsection{Gravity}
+\begin{minted}{cpp}
+  /* For every particle, we define a property gravity
+  acts in the direction of the vector specified */
+  fix grav all gravity 9.81 vector 0.0 0.0 -1.0
+  \end{minted}
+  \subsection{Timestep}
+
+  \begin{minted}{cpp}
+    /* Define the timestep equal to 0.001 sec.
+    The unit depends on the SI unit used.
+    It is recommended that the simulation should
+    be 20\% or lesser than a Rayleigh TimeStep*/
+ timestep 0.001
+  \end{minted}
+
+\subsection{Thermodynamic output settings}
+For most settings leave this unchanged.
+\begin{minted}{cpp}
+  /*Describe quantities to be printed on logfile
+  and the output screen. The number of interval to the
+  write the thermodynamic quantities.
+  Lost _Ignore ignore lost particle */
+  thermo_style custom step atoms ke cpu
+  thermo 10000
+  thermo_modify norm no lost ignore
+  \end{minted}
+\subsection{Check, time sttep and Initialising dump file}
+\begin{minted}{cpp}
+  /* Check the time step and compare it with Rayleigh.
+  Give error if its greater than 0.01 \% greater.
+  Initialize dump by running 1 timestep. Is recomended to do so.
+  Unfix the checking after once. The result is written in log file*/
+  fix ctg all check/timestep/gran 1 0.01 0.01
+  run 1
+  unfix ctg
+  \end{minted}
+\subsection{Create Imaging Information}
+\begin{minted}{cpp}
+  /*Generates a set of dump files
+  that contain information for imaging
+  the system. Give the interval and file type to save.
+  This generates huge files, therefore it is
+  recommended to dump properties that are necessary.  */
+  dump dumpstl all stl 10000 dump*stl
+  dump dmp all custom 10000 dump.1 id type x y z
+\end{minted}
+
+\section{Execution and Furthur Settings}
+
+
+\subsection{Run}
+
+\begin{minted}{cpp}
+  /* run the simulation for partilcular timestep */
+  run 15000 upto
+  \end{minted}
+
+\vspace*{3ex}
+\vfill
+
+For a complete reference, see: \\
+$\Rightarrow$
+LIGGGHTS Documentation\\
+\hspace*{1.2em}
+\hspace*{1.2em} \url{http://www.cfdem.com/media/DEM/docu/Manual.html}
+
+
+\end{multicols}
+\end{document}
